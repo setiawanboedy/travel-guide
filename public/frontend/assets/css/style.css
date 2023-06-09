@@ -1,3 +1,5 @@
+
+
 .navbar {
     position: relative;
     display: -webkit-box;
@@ -398,53 +400,66 @@
   .navbar-light .navbar-text a:focus {
     color: #F1A501;
   }
+  .collapsed .collapse-icon {
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
 
   .d-block {
     display: block !important;
   }
-  .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto; }
-    @media (min-width: 576px) {
-      .container {
-        max-width: 540px; } }
-    @media (min-width: 768px) {
-      .container {
-        max-width: 720px; } }
-    @media (min-width: 992px) {
-      .container {
-        max-width: 960px; } }
-    @media (min-width: 1200px) {
-      .container {
-        max-width: 1140px; } }
 
-  .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto; }
+
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    position: relative;
+  }
+
 
   @media (min-width: 576px) {
     .container, .container-sm {
-      max-width: 540px; } }
+      max-width: 540px;
+    }
+  }
 
   @media (min-width: 768px) {
     .container, .container-sm, .container-md {
-      max-width: 720px; } }
+      max-width: 720px;
+    }
+  }
 
   @media (min-width: 992px) {
     .container, .container-sm, .container-md, .container-lg {
-      max-width: 960px; } }
+      max-width: 960px;
+    }
+  }
 
   @media (min-width: 1200px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-      max-width: 1140px; } }
-  .border-lg-0 {
-    border: 0 !important;
+      max-width: 1140px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+      max-width: 1320px;
+    }
   }
 
   .mt-4 {
@@ -535,12 +550,13 @@
     font-size: 1.125rem !important;
   }
   .ftco-section {
-    padding: 7em 0;
+    padding: 5em 0;
     position: relative;
     width: 100%; }
     @media (max-width: 767.98px) {
       .ftco-section {
         padding: 6em 0; } }
+
 .row {
     display: -webkit-box;
     display: -ms-flexbox;

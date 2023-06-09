@@ -13,7 +13,7 @@
           <h4 class="fw-bold text-danger mb-3">Best Destinations around the world</h4>
           <h1 class="hero-title">Travel, enjoy and live a new and full life</h1>
           <p class="mb-4 fw-medium">Built Wicket longer admire do barton vanity itself do in it.<br class="d-none d-xl-block" />Preferred to sportsmen it engrossed listening. Park gate<br class="d-none d-xl-block" />sell they west hard for the.</p>
-          <div class="text-center text-md-start"> <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="#!" role="button">Get tour guide</a>
+          <div class="text-center text-md-start"> <a class="btn btn-primary btn-lg me-md-4 mb-3 mb-md-0 border-0 primary-btn-shadow" href="{{route('guide')}}" role="button">Get your guide</a>
             <div class="w-100 d-block d-md-none"></div><a href="#!" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo"><span class="btn btn-danger round-btn-lg rounded-circle me-3 danger-btn-shadow"> <img src="{{url('frontend/assets/img/hero/play.svg')}}" width="15" alt="paly"/></span></a><span class="fw-medium">Play Demo</span>
             <div class="modal fade" id="popupVideo" tabindex="-1" aria-labelledby="popupVideo" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -168,7 +168,7 @@
               <div>
                 <h5 class="fw-medium">Trip To Greece</h5>
                 <p class="fs--1 mb-3 fw-medium">14-29 June | by Robbin joseph</p>
-                <div class="icon-group mb-4"> <span class="btn icon-item"> <img src="{{url('frontend/assets/img/steps/leaf.svg')}}" alt=""/></span><span class="btn icon-item"> <img src="assets/img/steps/map.svg" alt=""/></span><span class="btn icon-item"> <img src="assets/img/steps/send.svg" alt=""/></span>
+                <div class="icon-group mb-4"> <span class="btn icon-item"> <img src="{{url('frontend/assets/img/steps/leaf.svg')}}" alt=""/></span><span class="btn icon-item"> <img src="{{url('frontend/assets/img/steps/map.svg')}}" alt=""/></span><span class="btn icon-item"> <img src="{{url('frontend/assets/img/steps/send.svg')}}" alt=""/></span>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center mt-n1"><img class="me-3" src="{{url('frontend/assets/img/steps/building.svg')}}" width="18" alt="building" /><span class="fs--1 fw-medium">24 people going</span></div>

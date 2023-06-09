@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::namespace('App\Http\Controllers')->group(function(){
+    Route::get('/', 'WelcomeController@index')->name('home');
     Route::get('/guide', 'TourGuideController@index')->name('guide');
+    Route::get('/guide-detail', 'TourDetailController@index')->name('guide-detail');
 });
 Route::prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
