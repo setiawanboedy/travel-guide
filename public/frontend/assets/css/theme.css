@@ -19642,3 +19642,9 @@ iframe {
 -----------------------------------------------*/
 
 /*# sourceMappingURL=theme.css.map */
+.card .img-package
+{
+    min-height: 510px;
+    object-fit: none;
+    object-position: center;
+}

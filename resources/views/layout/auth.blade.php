@@ -26,7 +26,7 @@
 				<div class="row justify-content-md-center">
 					<div class="card-wrapper col-12 col-md-4 mt-5">
 						<div class="brand text-center mb-3">
-							<a href="/"><img src="public/img/logo.png"></a>
+							<a href="/"><img src="{{url('frontend/assets/img/logo.svg')}}"></a>
 						</div>
 						@yield('content')
 						@include('includes.auth.footer')
