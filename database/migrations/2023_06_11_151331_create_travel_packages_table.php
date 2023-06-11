@@ -23,7 +23,7 @@ class CreateTravelPackagesTable extends Migration
             $table->string('language');
             $table->string('foods');
             $table->date('departure_date');
-            $table->string('duration');
+            $table->integer('duration');
             $table->string('type');
             $table->integer('price');
             $table->softDeletes();

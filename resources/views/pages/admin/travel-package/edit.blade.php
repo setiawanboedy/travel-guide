@@ -7,7 +7,9 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Edit Travel Package {{$item->title}}</h1>
-
+            <a href="{{ route('travel-package.index') }}" class="btn btn-sm btn-danger shadow-sm">
+                <i class="fa-sm text-white-50"></i> Cancel Edit
+            </a>
         </div>
 
         @if ($errors->any())
@@ -23,6 +25,7 @@
 
         <div class="card shadow">
             <div class="card-body">
+
                 <form action="{{route('travel-package.update', $item->id)}}" method="post">
                     @method('PUT')
                     @csrf
@@ -57,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label for="duration">Duration</label>
-                        <input type="text" class="form-control" name="duration" placeholder="Duration" value="{{$item->duration}}">
+                        <input type="number" class="form-control" name="duration" placeholder="Duration" value="{{$item->duration}}">
                     </div>
                     <div class="form-group">
                         <label for="type">Type</label>

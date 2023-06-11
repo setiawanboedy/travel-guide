@@ -7,7 +7,9 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Edit Gallery</h1>
-
+            <a href="{{ route('gallery.index') }}" class="btn btn-sm btn-danger shadow-sm">
+                <i class="fa-sm text-white-50"></i> Cancel Edit
+            </a>
         </div>
 
         @if ($errors->any())

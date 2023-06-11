@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label for="duration">Duration</label>
-                        <input type="text" class="form-control" name="duration" placeholder="Duration" value="{{old('duration')}}">
+                        <input type="number" class="form-control" name="duration" placeholder="Duration" value="{{old('duration')}}">
                     </div>
                     <div class="form-group">
                         <label for="type">Type</label>
