@@ -53,8 +53,8 @@
             </div>
 
 
-            <label class="mt-3" for="wiskul_packages_id">Tour Guide</label>
-            <select name="wiskul_packages_id" required class="form-control mb-2">
+            <label class="mt-3" for="travel_packages_id">Tour Guide</label>
+            <select name="travel_packages_id" required class="form-control mb-2">
                 <option value="">Pilih Tour Guide</option>
 
                 <option value="0">

@@ -59,7 +59,7 @@
          <!-- <span class="myratings">4.5</span> -->
        </div>
 
-      <a href="index.htm" class="btn btn-home-page mt-3 px-5">Submit</a>
+      <a href="{{route('home')}}" class="btn btn-home-page mt-3 px-5">Submit</a>
 
     </div>
   </div>

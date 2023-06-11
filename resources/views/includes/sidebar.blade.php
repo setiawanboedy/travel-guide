@@ -18,6 +18,18 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{route('travel-package.index')}}">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Travel Package</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('gallery.index')}}">
+                    <i class="fas fa-fw fa-hotel"></i>
+                    <span>Galleries</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('guide-package.index')}}">
                     <i class="fas fa-fw fa-hotel"></i>
                     <span>Guide Package</span></a>
