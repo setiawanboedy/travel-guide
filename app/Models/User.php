@@ -35,6 +35,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get all of the ratings for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(GuideRatings::class,'users_id','id');
+    }
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>

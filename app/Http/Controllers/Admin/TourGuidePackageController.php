@@ -42,7 +42,7 @@ class TourGuidePackageController extends Controller
     public function store(TourGuideRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = str::slug($request->title);
+        $data['slug'] = str::slug($request->name);
         $data['image'] = $request->file('image')->store('assets/guide','public');
         TourGuide::create($data);
 

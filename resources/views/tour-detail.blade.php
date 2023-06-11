@@ -1,5 +1,5 @@
 @extends('layout.tour-guide')
-
+@section('title', 'Tour Guide Detail')
 @section('content')
 
 <section class="ftco-section">

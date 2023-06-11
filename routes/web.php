@@ -19,6 +19,8 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/guide', 'TourGuideController@index')->name('guide');
     Route::get('/destination-detail', 'DestDetailController@index')->name('destination-detail');
     Route::get('/guide-detail', 'TourDetailController@index')->name('guide-detail');
+    Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+    Route::get('/review', 'ReviewController@index')->name('review');
 });
 Route::prefix('admin')
     ->namespace('App\Http\Controllers\Admin')

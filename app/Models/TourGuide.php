@@ -28,4 +28,14 @@ class TourGuide extends Model
      */
     protected $hidden = [
     ];
+
+    /**
+     * Get all of the ratings for the TourGuide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(GuideRatings::class, 'guides_id', 'id');
+    }
 }
