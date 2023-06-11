@@ -12,142 +12,50 @@
                 </ol>
             </div>
         </div>
-     <div class="row">
-        <div class="col-md-3 ftco-animate">
-           <div class="project-wrap">
-              <a href="{{route('guide-detail')}}" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-1.jpg')}});">
-                 <span class="price">Rp 500rb/person</span>
-             </a>
-             <div class="text p-4">
-                 <span class="days">8 Days Tour</span>
-                 <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-                 <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-                 <ul>
-                    <li><span class="flaticon-mountains"></span>Near Mountain</li>
-                </ul>
+
+
+
+    @foreach($items as $item)
+    @if($loop->first)
+        <!-- Design for the first iteration -->
+        <div class="row">
+            <div class="col-md-3 ftco-animate">
+               <div class="project-wrap">
+                  <a href="{{route('guide-detail')}}" class="img" style="background-image: url({{Storage::url($item->image)}});">
+                     <span class="price">Rp {{$item->price}}k/person</span>
+                 </a>
+                 <div class="text p-4">
+                     <span class="days">{{$item->days}} Days Tour</span>
+                     <h3><a class="text-decoration-none" href="#">{{$item->name}}</a></h3>
+                     <p class="location"><span class="fa fa-map-marker"></span>    {{$item->location}}</p>
+                     <ul>
+                        <li><span class="flaticon-vehicle"></span>{{$item->transportation}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-3 ftco-animate">
-       <div class="project-wrap">
-          <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-2.jpg')}});">
-             <span class="price">Rp 500rb/person</span>
-         </a>
-         <div class="text p-4">
-            <span class="days">8 Days Tour</span>
-            <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-            <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-            <ul>
-               <li><span class="flaticon-mountains"></span>Near Mountain</li>
-           </ul>
-       </div>
-    </div>
- </div>
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-3.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
+    @else
+        <!-- Design for the rest of the iterations -->
+        <div class="col-md-3 ftco-animate">
+            <div class="project-wrap">
+               <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-2.jpg')}});">
+                  <span class="price">Rp {{$item->price}}k/person</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">{{$item->days}} Days Tour</span>
+                 <h3><a class="text-decoration-none" href="#">{{$item->name}}</a></h3>
+                 <p class="location"><span class="fa fa-map-marker"></span>    {{$item->location}}</p>
+                 <ul>
+                    <li><span class="flaticon-vehicle"></span>{{$item->transportation}}</li>
+                </ul>
+            </div>
+         </div>
+      </div>
+    @endif
+    @endforeach
 
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-4.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-5.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-6.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-7.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-8.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div>
- </div>
- {{-- <div class="col-md-3 ftco-animate">
-   <div class="project-wrap">
-      <a href="#" class="img" style="background-image: url({{url('frontend/assets/img-tour/destination-9.jpg')}});">
-         <span class="price">$550/person</span>
-     </a>
-     <div class="text p-4">
-        <span class="days">8 Days Tour</span>
-        <h3><a class="text-decoration-none" href="#">Budi Setiawan</a></h3>
-        <p class="location"><span class="fa fa-map-marker"></span> Praya, Lombok Tengah</p>
-        <ul>
-           <li><span class="flaticon-mountains"></span>Near Mountain</li>
-       </ul>
-   </div>
- </div> --}}
+
+
  </div>
  </div>
  <div class="row mt-5">

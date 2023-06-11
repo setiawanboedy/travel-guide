@@ -7,8 +7,17 @@
           <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="#destination">Destination</a></li>
           <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="#booking">Booking</a></li>
           <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="#testimonial">Testimonial</a></li>
-          <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" href="{{route('login')}}">Login</a></li>
-          <li class="nav-item px-3 px-xl-4"><a class="btn btn-outline-dark order-1 order-lg-0 fw-medium" href="{{route('register')}}">Sign Up</a></li>
+            @guest
+            <li class="nav-item px-3 px-xl-4"><a class="nav-link fw-medium" aria-current="page" type="submit" role="button" onclick="event.preventDefault(); location.href='{{url('login')}}'">Login</a></li>
+            <li class="nav-item px-3 px-xl-4"><a class="btn btn-outline-dark order-1 order-lg-0 fw-medium" type="submit" role="button" onclick="event.preventDefault(); location.href='{{url('login')}}'">Sign Up</a></li>
+            @endguest
+
+            @auth
+            <form method="POST" action="{{url('logout')}}">
+                @csrf
+                <li class="nav-item px-3 px-xl-4"><button class="btn btn-outline-dark order-1 order-lg-0 fw-medium" role="button" type="submit">Logout</button></li>
+            </form>
+            @endauth
 
         </ul>
       </div>

@@ -52,7 +52,7 @@ is-invalid
                 </button>
             </div>
             <div class="text-center mt-3 small">
-                Don't have an account? <a href="register.html">Sign Up</a>
+                Don't have an account? <a href="{{route('register')}}">Sign Up</a>
             </div>
         </form>
     </div>

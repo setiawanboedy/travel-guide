@@ -13,10 +13,11 @@ class CreateTourGuideTable extends Migration
      */
     public function up()
     {
-        Schema::create('tour_guide', function (Blueprint $table) {
+        Schema::create('tour_guides', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('image');
             $table->string('name');
+            $table->string('slug');
             $table->string('location');
             $table->string('transportation');
             $table->integer('days');
@@ -33,6 +34,6 @@ class CreateTourGuideTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tour_guide');
+        Schema::dropIfExists('tour_guides');
     }
 }
