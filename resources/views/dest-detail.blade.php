@@ -7,57 +7,48 @@
             <div class="col">
               <nav class="bg-light rounded-3 p-3 mb-4">
                 <ol class="breadcrumb mb-0 bg-light">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Destination Detail</li>
+                  <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">{{$item->slug}}</li>
                 </ol>
             </div>
           </div>
         <div class="row">
             <div class="col-lg-8 pl-lg-0">
                 <div class="card card-detail">
-                    <h1>Nusa Peninda</h1>
-                    <p>Republic of Indonesia</p>
+                    <h1>{{$item->title}}</h1>
+                    <p>{{$item->location}}</p>
+                    @if ($item->travel_galleries->count())
                     <div class="gallery">
-                        <div class="xzoom-container">
-                            <img src="{{url('frontend/assets/img/dest/pic_featured.jpg')}}" alt="main image" class="xzoom"
-                                id="xzoom-default" xoriginal="{{url('frontend/imag/dest/pic_featured.jpg')}}" />
+                        <div class="portrait-crop">
+                            <img src="{{Storage::url($item->travel_galleries->first()->image)}}" alt="main image" />
                         </div>
                     </div>
+                    @endif
                     <h2>Tentang Wisata</h2>
                     <p><span class="fa fa-map-marker mr-2"></span>Lombok utara</p>
                     <p>
-                        Nusa Penida is an island southeast of Indonesia’s island Bali
-                        and a district of Klungkung Regency that includes the
-                        neighbouring small island of Nusa Lembongan. The Badung Strait
-                        separates the island and Bali. The interior of Nusa Penida is
-                        hilly with a maximum altitude of 524 metres. It is drier than
-                        the nearby island of Bali.
-                    </p>
-                    <p>
-                        Bali and a district of Klungkung Regency that includes the
-                        neighbouring small island of Nusa Lembongan. The Badung Strait
-                        separates the island and Bali.
+                        {!!$item->about!!}
                     </p>
                     <div class="features row">
                         <div class="col-md-4">
                             <img src="{{url('frontend/assets/img/dest/ic_event.png')}}" alt="event" class="features-image" />
                             <div class="description">
                                 <h3>Featured Event</h3>
-                                <p>Tari Kecak</p>
+                                <p>{{$item->featured_event}}</p>
                             </div>
                         </div>
                         <div class="col-md-4 border-start">
                             <img src="{{url('frontend/assets/img/dest/ic_bahasa.png')}}" alt="event" class="features-image" />
                             <div class="description">
                                 <h3>Language</h3>
-                                <p>Bahasa Indonesia</p>
+                                <p>{{$item->language}}</p>
                             </div>
                         </div>
                         <div class="col-md-4 border-start">
                             <img src="{{url('frontend/assets/img/dest/ic_foods.png')}}" alt="event" class="features-image" />
                             <div class="description">
                                 <h3>Foods</h3>
-                                <p>Local Foods</p>
+                                <p>{{$item->foods}}</p>
                             </div>
                         </div>
                     </div>
@@ -70,26 +61,43 @@
                     <table class="trip-informations">
                         <tr>
                             <th width="50%">Date of Departure</th>
-                            <td width="50%" class="text-right">22 Aug, 2019</td>
+                            <td width="50%" class="text-right">
+                                {{\Carbon\Carbon::create($item->date_of_departure)->format('F n, Y')}}
+                            </td>
                         </tr>
                         <tr>
                             <th width="50%">Duration</th>
-                            <td width="50%" class="text-right">4D 3N</td>
+                            <td width="50%" class="text-right">{{$item->duration}} day/s</td>
                         </tr>
                         <tr>
                             <th width="50%">Type</th>
-                            <td width="50%" class="text-right">Open Trip</td>
+                            <td width="50%" class="text-right">{{$item->type}}</td>
                         </tr>
                         <tr>
                             <th width="50%">Price</th>
-                            <td width="50%" class="text-right">$80,00 / person</td>
+                            <td width="50%" class="text-right">Rp {{$item->price}}k / person</td>
                         </tr>
                     </table>
                 </div>
                 <div class="join-container">
-                    <a href="{{route('checkout')}}" class="btn btn-block btn-join-now mt-3 py-2">
-                        Join Now
+                    @auth
+                        {{-- <form action="" method="post">
+                            @csrf --}}
+                            {{-- <div class="d-grid">
+                                <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
+                                    Join Now
+                                </button>
+                            </div> --}}
+                        {{-- </form> --}}
+                        <a class="btn btn-block btn-join-now mt-3 py-2" href="{{route('checkout')}}">
+                            Join Now
+                        </a>
+                    @endauth
+                    @guest
+                    <a href="{{route('login')}}" class="btn btn-block btn-join-now mt-3 py-2">
+                        Login or Register to Join
                     </a>
+                    @endguest
                 </div>
 
                 <div class="row mt-5">

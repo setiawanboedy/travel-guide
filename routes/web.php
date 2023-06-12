@@ -19,8 +19,20 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/guide', 'TourGuideController@index')->name('guide');
     Route::get('/destination-detail/{slug}', 'DestDetailController@index')->name('destination-detail');
     Route::get('/guide-detail', 'TourDetailController@index')->name('guide-detail');
-    Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+
     Route::get('/review', 'ReviewController@index')->name('review');
+
+    // frontend crud
+    Route::get('/checkout/{id}', 'CheckoutController@index')->name('checkout')
+    ->middleware(['auth']);
+    Route::post('/checkout/{id}', 'CheckoutController@process')->name('checkout-process')
+    -middleware(['auth']);
+    Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')->name('checkout-create')
+    -middleware(['auth']);
+    Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')->name('checkout-remove')
+    -middleware(['auth']);
+    Route::get('/checkout/confirm/{id}', 'CheckoutController@success')->name('checkout-success')
+    -middleware(['auth']);
 });
 Route::prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
@@ -30,6 +42,7 @@ Route::prefix('admin')
         Route::resource('guide-package', TourGuidePackageController::class);
         Route::resource('travel-package', TravelPackageController::class);
         Route::resource('gallery', GalleryController::class);
+        Route::resource('transaction', TransactionController::class);
     });
 
 Auth::routes();

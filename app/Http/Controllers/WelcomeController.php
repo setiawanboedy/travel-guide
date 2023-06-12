@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index(Request $request){
         $items = TravelPackage::with(['travel_galleries'])->get();
-        
+
         return view('welcome',[
             'items'=>$items
         ]);

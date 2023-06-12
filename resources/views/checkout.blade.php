@@ -25,8 +25,6 @@
                     <td>Picture</td>
                     <td>Name</td>
                     <td>Nationality</td>
-                    <td>Visa</td>
-                    <td>Passport</td>
                     <td></td>
                   </tr>
                 </thead>
@@ -37,8 +35,6 @@
                     </td>
                     <td class="align-middle">Angga Riski</td>
                     <td class="align-middle">CN</td>
-                    <td class="align-middle">N/A</td>
-                    <td class="align-middle">Active</td>
                     <td class="align-middle">
                       <a href="#">
                         <img src="{{url('frontend/assets/img/dest/ic_remove.png')}}" />
@@ -73,18 +69,10 @@
                   <input type="text" class="form-control mb-2 me-sm-2" id="inputUsername" name="inputUsername"
                     placeholder="Username" />
                 </div>
-                <div class="col-sm-2">
-                  <select class="form-select custom-select mb-2 me-sm-2 form-control" name="inputVisa" id="inputVisa">
-                    <option value="VISA" selected>VISA</option>
-                    <option value="30 Days">30 Days</option>
-                    <option value="N/A">N/A</option>
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <div class="mb-2">
-                    <input type="text" class="datepicker" id="doepassport" placeholder="DOE Passport" />
+                <div class="col-sm-3">
+                    <input type="text" class="form-control mb-2 me-sm-2" id="inputNationality" name="inputNationality"
+                      placeholder="Nationality" />
                   </div>
-                </div>
                 <div class="col-auto">
                   <button type="submit" class="btn btn-add-now mb-2 px-4">
                     Add Now
@@ -109,10 +97,6 @@
               <tr>
                 <th width="50%">Members</th>
                 <td width="50%" class="text-right">2 person</td>
-              </tr>
-              <tr>
-                <th width="50%">Additional VISA</th>
-                <td width="50%" class="text-right">$ 190,00</td>
               </tr>
               <tr>
                 <th width="50%">Trip Price</th>
@@ -141,7 +125,7 @@
               <div class="bank-item pb-3">
                 <img src="{{url('frontend/assets/img/dest/ic_bank.png')}}" alt="bank" class="bank-image">
                 <div class="description">
-                  <h3>PT Nomads ID</h3>
+                  <h3>PT Jadoo ID</h3>
                   <p>0881 8829 8800
                     <br>
                     Bank Central Asia

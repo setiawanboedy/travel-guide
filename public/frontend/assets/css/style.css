@@ -923,6 +923,16 @@
   content: "\f005";
   }
 
+  @media (min-width: 320px) and (max-width: 1024px) {
+    .rating > label:before {
+        margin: 5px;
+        font-size: 3.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+  }
+}
+
   .rating > .half:before {
   content: "\f089";
   position: absolute;
@@ -967,3 +977,24 @@
   .mt-100 {
    margin-top: 70px
   }
+
+.portrait-crop{
+    display: inline-block;
+    height: 715px;
+    width: 100%;
+    overflow: hidden;
+
+}
+@media (min-width: 320px) and (max-width: 1024px) {
+    .portrait-crop{
+        display: inline-block;
+        height: 415px;
+        width: 100%;
+        overflow: hidden;
+    }
+  }
+
+
+.portrait-crop img{
+    width: 100%;
+}
