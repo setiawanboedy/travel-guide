@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\TransactionDetail;
+use App\Models\TravelPackage;
 
 class Transaction extends Model
 {
@@ -21,7 +23,7 @@ class Transaction extends Model
     protected $hidden = [];
 
     public function transaction_details(){
-        return $this->hasMany(TransactionDetails::class,'transactions_id','id');
+        return $this->hasMany(TransactionDetail::class,'transactions_id','id');
     }
 
     public function travel_package()

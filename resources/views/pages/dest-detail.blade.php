@@ -81,17 +81,14 @@
                 </div>
                 <div class="join-container">
                     @auth
-                        {{-- <form action="" method="post">
-                            @csrf --}}
-                            {{-- <div class="d-grid">
+                        <form action="{{route('checkout-process', $item->id)}}" method="post">
+                            @csrf
+                            <div class="d-grid">
                                 <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
                                     Join Now
                                 </button>
-                            </div> --}}
-                        {{-- </form> --}}
-                        <a class="btn btn-block btn-join-now mt-3 py-2" href="{{route('checkout')}}">
-                            Join Now
-                        </a>
+                            </div>
+                        </form>
                     @endauth
                     @guest
                     <a href="{{route('login')}}" class="btn btn-block btn-join-now mt-3 py-2">

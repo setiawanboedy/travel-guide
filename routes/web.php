@@ -20,20 +20,20 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/destination-detail/{slug}', 'DestDetailController@index')->name('destination-detail');
     Route::get('/guide-detail', 'TourDetailController@index')->name('guide-detail');
 
-    Route::get('/review', 'ReviewController@index')->name('review');
 
-    // frontend crud
-    Route::get('/checkout/{id}', 'CheckoutController@index')->name('checkout')
-    ->middleware(['auth']);
-    Route::post('/checkout/{id}', 'CheckoutController@process')->name('checkout-process')
-    -middleware(['auth']);
-    Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')->name('checkout-create')
-    -middleware(['auth']);
-    Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')->name('checkout-remove')
-    -middleware(['auth']);
-    Route::get('/checkout/confirm/{id}', 'CheckoutController@success')->name('checkout-success')
-    -middleware(['auth']);
 });
+
+Route::namespace('App\Http\Controllers')
+    ->middleware(['auth','web'])
+    ->controller(CheckoutController::class)
+    ->group(function(){
+        Route::post('/checkout/process/{id}', 'process')->name('checkout-process');
+        Route::get('/checkout/{id}', 'index')->name('checkout-package');
+        Route::post('/checkout/create/{detail_id}', 'create')->name('checkout-create');
+        Route::get('/checkout/remove/{detail_id}', 'remove')->name('checkout-remove');
+        Route::get('/checkout/confirm/{id}', 'success')->name('checkout-success');
+});
+
 Route::prefix('admin')
     ->namespace('App\Http\Controllers\Admin')
     ->middleware(['auth','admin'])

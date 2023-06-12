@@ -16,7 +16,7 @@ class TransactionController extends Controller
     public function index()
     {
         $items = Transaction::with([
-            'travel_details','travel_package', 'user'
+            'transaction_details','travel_package', 'user'
         ])->get();
 
         return view('pages.admin.transaction.index',[
@@ -56,7 +56,7 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        $item = Transaction::with(['travel_details','travel_package','user'])
+        $item = Transaction::with(['transaction_details','travel_package','user'])
         ->findOrFail($id);
 
         return view('pages.admin.transaction.detail',[

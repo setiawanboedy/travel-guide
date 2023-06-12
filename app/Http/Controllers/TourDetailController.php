@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class TourDetailController extends Controller
 {
     public function index(Request $request){
-        return view('tour-detail');
+        return view('pages.tour-detail');
     }
 }

@@ -10,7 +10,7 @@ class TourGuideController extends Controller
     public function index(Request $request){
 
         $items = TourGuide::get();
-        return view('tour-guide', [
+        return view('pages.tour-guide', [
             'items'=>$items
         ]);
     }

@@ -16,32 +16,51 @@
       <div class="row">
         <div class="col-lg-8 pl-lg-0">
           <div class="card card-detail">
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+
+                @endforeach
+            </ul>
+        </div>
+        @endif
             <h1>Who is going ?</h1>
-            <p>Trip to Ubud, Bali, Indonesia</p>
+            <p>Trip to {{$item->travel_package->title}}, {{$item->travel_package->location}}</p>
             <div class="attendee">
               <table class="table table-responsive-sm text-center">
                 <thead>
                   <tr>
                     <td>Picture</td>
-                    <td>Name</td>
+                    <td>Username</td>
                     <td>Nationality</td>
                     <td></td>
                   </tr>
                 </thead>
                 <tbody>
+                  @forelse ($item->transaction_details as $detail)
                   <tr>
                     <td>
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" height="60" />
+                      <img src="https://ui-avatars.com/api/?name={{$detail->username}}" height="60" class="rounded-circle" />
                     </td>
-                    <td class="align-middle">Angga Riski</td>
-                    <td class="align-middle">CN</td>
+                    <td class="align-middle">{{$detail->username}}</td>
+                    <td class="align-middle">{{$detail->nationality}}</td>
                     <td class="align-middle">
-                      <a href="#">
+                      <a href="{{route('checkout-remove', $detail->id)}}">
                         <img src="{{url('frontend/assets/img/dest/ic_remove.png')}}" />
                       </a>
                     </td>
 
                   </tr>
+                  @empty
+                  <tr>
+                    <td colspan="6" class="text-center">
+                        No visitor
+                    </td>
+                  </tr>
+                  @endforelse
 
                 </tbody>
 
@@ -64,13 +83,14 @@
 
               <h6>Add Member</h6>
 
-              <form class="row gy-2 gx-3 align-items-center">
+              <form method="POST" action="{{route('checkout-create', $item->id)}}" class="row gy-2 gx-3 align-items-center">
+                @csrf
                 <div class="col-sm-3">
-                  <input type="text" class="form-control mb-2 me-sm-2" id="inputUsername" name="inputUsername"
+                  <input type="text" class="form-control mb-2 me-sm-2" id="username" name="username"
                     placeholder="Username" />
                 </div>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control mb-2 me-sm-2" id="inputNationality" name="inputNationality"
+                    <input type="text" class="form-control mb-2 me-sm-2" id="nationality" name="nationality"
                       placeholder="Nationality" />
                   </div>
                 <div class="col-auto">
@@ -96,21 +116,21 @@
             <table class="trip-informations">
               <tr>
                 <th width="50%">Members</th>
-                <td width="50%" class="text-right">2 person</td>
+                <td width="50%" class="text-right">{{$item->transaction_details->count()}} person</td>
               </tr>
               <tr>
                 <th width="50%">Trip Price</th>
-                <td width="50%" class="text-right">$ 80,00 / person</td>
+                <td width="50%" class="text-right">Rp {{$item->travel_package->price}}k / person</td>
               </tr>
               <tr>
                 <th width="50%">Sub Total</th>
-                <td width="50%" class="text-right">$ 280,00</td>
+                <td width="50%" class="text-right">Rp {{$item->transaction_total}}k</td>
               </tr>
                <tr>
                 <th width="50%">Total (+Unique)</th>
                 <td width="50%" class="text-right tex-total">
-                  <span class="text-blue">$ 279,</span>
-                  <span class="text-orange">33</span>
+                  <span class="text-blue">Rp {{$item->transaction_total}},</span>
+                  <span class="text-orange">{{mt_rand(0,999)}}</span>
                 </td>
               </tr>
             </table>
@@ -137,12 +157,12 @@
 
           </div>
           <div class="join-container">
-            <a href="{{route('review')}}" class="btn btn-block btn-join-now mt-3 py-2">
+            <a href="{{route('checkout-success', $item->id)}}" class="btn btn-block btn-join-now mt-3 py-2">
               I Have Made Payment
             </a>
           </div>
           <div class="text-center mt-3">
-            <a href="#" class="text-muted" style="text-decoration: none;">
+            <a href="{{route('destination-detail', $item->travel_package->slug)}}" class="text-muted" style="text-decoration: none;">
               Cancel Booking
             </a>
           </div>
