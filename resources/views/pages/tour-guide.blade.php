@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-3 ftco-animate">
                             <div class="project-wrap">
-                                <a href="{{ route('guide-detail') }}" class="img"
+                                <a href="{{ route('guide-detail', $item->slug) }}" class="img"
                                     style="background-image: url({{ Storage::url($item->image) }});">
                                     <span class="price">Rp {{ $item->price }}k/person</span>
                                 </a>
@@ -48,7 +48,7 @@
                                     <h3><a class="text-decoration-none" href="#">{{ $item->name }}</a></h3>
                                     <p class="location"><span class="fa fa-map-marker"></span> {{ $item->location }}</p>
                                     <ul>
-                                        <li><span class="flaticon-vehicle"></span>{{ $item->transportation }}</li>
+                                        <li class="fa-solid fa-car"><span ></span>{{ $item->transportation }}</li>
                                     </ul>
                                 </div>
                             </div>

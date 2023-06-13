@@ -22,7 +22,7 @@
                         <th>Name</th>
                         <th>Location</th>
                         <th>Days</th>
-                        <th>Transportation</th>
+                        <th>Destination</th>
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
@@ -37,8 +37,8 @@
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->location }}</td>
                             <td>{{ $item->days }}</td>
-                            <td>{{ $item->transportation }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->travel_package->title }}</td>
+                            <td>{{"Rp " . number_format($item->price,2,',','.') }}</td>
                             <td>
                                 <a href="{{route('guide-package.edit', $item->id) }}" class="btn btn-info">
                                     <i class="fa fa-pencil-alt"></i>

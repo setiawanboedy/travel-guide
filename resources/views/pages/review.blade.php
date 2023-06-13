@@ -1,4 +1,5 @@
 @extends('layout.checkout')
+@section('title', 'Checkout Success')
 @section('content')
 <div class="container-sm section-success mt-100" style="max-width: 650px; margin-bottom: 150px;">
     <div class="col text-center">
@@ -13,21 +14,18 @@
 
         <table class="table table-bordered trip-informations">
             <tr>
-                <th class="text-left" width="50%">Date of Departure</th>
-                <td width="50%" class="text-left">22 Aug, 2019</td>
-            </tr>
-            <tr>
-                <th class="text-left" width="50%">Duration</th>
-                <td width="50%" class="text-left">4D 3N</td>
-            </tr>
-            <tr>
-                <th class="text-left" width="50%">Type</th>
-                <td width="50%" class="text-left">Open Trip</td>
-            </tr>
-            <tr>
-                <th class="text-left" width="50%">Price</th>
-                <td width="50%" class="text-left">$80,00 / person</td>
-            </tr>
+                <th class="text-left" width="50%">Members</th>
+                <td width="50%" class="text-left">{{$item->transaction_details->count()}} person</td>
+              </tr>
+              <tr>
+                <th class="text-left" width="50%">Trip Price</th>
+                <td width="50%" class="text-left">Rp {{$item->travel_package->price}}k / person</td>
+              </tr>
+              <tr>
+                <th class="text-left" width="50%">Sub Total</th>
+                <td width="50%" class="text-left">Rp {{$item->transaction_total}}k</td>
+              </tr>
+               
         </table>
       </div>
 

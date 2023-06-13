@@ -15,8 +15,9 @@ class CreateRatingTourGuideTable extends Migration
     {
         Schema::create('guide_ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('guide_id');
+            $table->integer('users_id');
+            $table->integer('guides_id');
+            $table->string('username');
             $table->integer('rating');
             $table->timestamps();
         });

@@ -8,9 +8,6 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TravelPackage;
 
-use Carbon\Carbon;
-
-
 
 class CheckoutController extends Controller
 {
@@ -22,7 +19,7 @@ class CheckoutController extends Controller
     public function index(Request $request, $id)
     {
         $item = Transaction::with(['transaction_details','travel_package','user'])
-        ->find($id);
+        ->findOrFail($id);
 
         return view('pages.checkout',[
             'item'=>$item
@@ -84,10 +81,18 @@ class CheckoutController extends Controller
 
     public function success(Request $request, $id){
         $transaction = Transaction::findOrFail($id);
-        $transaction->transaction_status = 'PENDING';
+
+        if ($transaction->transaction_status == 'IN_CART') {
+            $transaction->transaction_status = 'PENDING';
+        }
 
         $transaction->save();
 
-        return view('pages.review');
+        $item = Transaction::with(['transaction_details','travel_package','user'])
+        ->findOrFail($id);
+
+        return view('pages.review',[
+            'item'=>$item
+        ]);
     }
 }

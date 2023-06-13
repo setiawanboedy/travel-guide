@@ -45,6 +45,18 @@
                     <input type="text" class="form-control" name="transportation" placeholder="Transportation" value="{{$item->transportation}}">
                 </div>
                 <div class="form-group">
+                    <label for="travel_packages_id">Travel Destination</label>
+                    <select name="travel_packages_id" required class="form-control">
+                        <option value="{{$item->travel_packages_id}}">Don't Change</option>
+                        @foreach ($travel_packages as $travel_package)
+                        <option value="{{$travel_package->id}}">
+                            {{$travel_package->title}}
+                        </option>
+
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="price">Price</label>
                     <input type="number" class="form-control" name="price" placeholder="Price" value="{{$item->price}}">
                 </div>

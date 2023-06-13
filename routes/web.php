@@ -18,8 +18,25 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/auth', 'AuthController@index')->name('auth');
     Route::get('/guide', 'TourGuideController@index')->name('guide');
     Route::get('/destination-detail/{slug}', 'DestDetailController@index')->name('destination-detail');
-    Route::get('/guide-detail', 'TourDetailController@index')->name('guide-detail');
+    Route::get('/guide-detail/{slug}', 'TourDetailController@index')->name('guide-detail');
 
+
+});
+
+Route::namespace('App\Http\Controllers')
+    ->middleware(['auth','web'])
+    ->controller(ReviewGuideController::class)
+    ->group(function(){
+        Route::get('/hire-guide/review-guide/{id}', 'index')->name('review-guide');
+        Route::post('/hire-guide/review-guide/{id}', 'create')->name('review-guide-create');
+});
+
+Route::namespace('App\Http\Controllers')
+    ->middleware(['auth','web'])
+    ->controller(HireGuideController::class)
+    ->group(function(){
+        Route::get('/hire-guide/{id}', 'index')->name('hire');
+        Route::post('/hire-guide/create/{id}','create')->name('hire-create');
 
 });
 

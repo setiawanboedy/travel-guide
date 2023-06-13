@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TourGuide;
+use App\Models\TravelPackage;
 use Illuminate\Support\Str;
 use App\Http\Requests\Admin\TourGuideRequest;
 
@@ -17,7 +18,7 @@ class TourGuidePackageController extends Controller
      */
     public function index()
     {
-        $items = TourGuide::all();
+        $items = TourGuide::with(['travel_package'])->get();
         return view('pages.admin.guide-package.index',[
             'items'=>$items
         ]);
@@ -30,7 +31,10 @@ class TourGuidePackageController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.guide-package.create');
+        $travel_packages = TravelPackage::all();
+        return view('pages.admin.guide-package.create',[
+            'travel_packages'=>$travel_packages
+        ]);
     }
 
     /**
@@ -42,9 +46,12 @@ class TourGuidePackageController extends Controller
     public function store(TourGuideRequest $request)
     {
         $data = $request->all();
-        $data['slug'] = str::slug($request->name);
+
         $data['image'] = $request->file('image')->store('assets/guide','public');
-        TourGuide::create($data);
+        $tour = TourGuide::create($data);
+
+        $data['slug'] = str::slug($request->name+$tour->id);
+        $data -> save();
 
         return redirect()->route('guide-package.index');
     }
@@ -69,8 +76,10 @@ class TourGuidePackageController extends Controller
     public function edit($id)
     {
         $item = TourGuide::findOrFail($id);
+        $travel_packages = TravelPackage::all();
         return view('pages.admin.guide-package.edit',[
-            'item'=>$item
+            'item'=>$item,
+            'travel_packages'=>$travel_packages
         ]);
     }
 

@@ -12,6 +12,7 @@ class TourGuide extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'travel_packages_id',
         'name',
         'slug',
         'image',
@@ -34,8 +35,13 @@ class TourGuide extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function ratings(): HasMany
+    public function ratings()
     {
-        return $this->hasMany(GuideRatings::class, 'guides_id', 'id');
+        return $this->hasMany(GuideRating::class, 'guides_id', 'id');
+    }
+
+    public function travel_package()
+    {
+        return $this->belongsTo(TravelPackage::class,'travel_packages_id', 'id');
     }
 }

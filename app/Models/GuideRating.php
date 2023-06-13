@@ -12,7 +12,9 @@ class GuideRating extends Model
     protected $fillable = [
         'guides_id',
         'users_id',
-        'rating'
+        'rating',
+        'username',
+        'comment'
     ];
 
     /**
@@ -28,7 +30,7 @@ class GuideRating extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class,'users_id','id');
     }
@@ -38,7 +40,7 @@ class GuideRating extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function guide(): BelongsTo
+    public function guide()
     {
         return $this->belongsTo(TourGuide::class, 'guides_id','id');
     }
