@@ -39,9 +39,9 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function ratings(): HasMany
+    public function ratings()
     {
-        return $this->hasMany(GuideRatings::class,'users_id','id');
+        return $this->hasMany(GuideRating::class,'users_id','id');
     }
 
     /**

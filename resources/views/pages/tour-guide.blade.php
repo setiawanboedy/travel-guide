@@ -23,7 +23,7 @@
                             <div class="project-wrap">
                                 <a href="{{ route('guide-detail', $item->slug) }}" class="img"
                                     style="background-image: url({{ Storage::url($item->image) }});">
-                                    <span class="price">Rp {{ $item->price }}k/person</span>
+                                    <span class="price">{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}/person</span>
                                 </a>
                                 <div class="text p-4">
                                     <span class="days">{{ $item->days }} Days Tour</span>
@@ -39,9 +39,9 @@
                         <!-- Design for the rest of the iterations -->
                         <div class="col-md-3 ftco-animate">
                             <div class="project-wrap">
-                                <a href="#" class="img"
-                                    style="background-image: url({{ url('frontend/assets/img-tour/destination-2.jpg') }});">
-                                    <span class="price">Rp {{ $item->price }}k/person</span>
+                                <a href="{{ route('guide-detail', $item->slug) }}" class="img"
+                                    style="background-image: url({{ Storage::url($item->image) }});">
+                                    <span class="price">{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}/person</span>
                                 </a>
                                 <div class="text p-4">
                                     <span class="days">{{ $item->days }} Days Tour</span>

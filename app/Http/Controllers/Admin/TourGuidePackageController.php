@@ -47,11 +47,12 @@ class TourGuidePackageController extends Controller
     {
         $data = $request->all();
 
+        $data['slug'] = str::slug($request->name);
         $data['image'] = $request->file('image')->store('assets/guide','public');
-        $tour = TourGuide::create($data);
+        $guide = TourGuide::create($data);
 
-        $data['slug'] = str::slug($request->name+$tour->id);
-        $data -> save();
+        $guide -> slug = str::slug($request->name.$guide->id);
+        $guide -> save();
 
         return redirect()->route('guide-package.index');
     }

@@ -32,4 +32,8 @@ class TravelPackage extends Model
         return $this->hasMany(Gallery::class, 'travel_packages_id', 'id');
     }
 
+    public function tour_guides()
+    {
+        return $this->hasMany(TourGuide::class, 'travel_packages_id', 'id');
+    }
 }

@@ -8,8 +8,8 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tour Guide</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('guide')}}">Tour Guide</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $item->slug }}</li>
                         </ol>
                 </div>

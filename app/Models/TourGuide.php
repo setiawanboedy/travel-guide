@@ -13,6 +13,7 @@ class TourGuide extends Model
 
     protected $fillable = [
         'travel_packages_id',
+        'rating_count',
         'name',
         'slug',
         'image',
