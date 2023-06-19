@@ -8,8 +8,8 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('guide')}}">Tour Guide</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('guide') }}">Tour Guide</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $item->slug }}</li>
                         </ol>
                 </div>
@@ -110,26 +110,34 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            @forelse ($item->ratings as $rating)
-                            <div class="card">
-                                <div class="card-body ml-3">
-                                    <div class="row">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                            alt="avatar" class="ml-2 rounded-circle img-fluid"
-                                            style="width: 50px; height:50px">
-                                        <div class="col ml-4">
-                                            <p class="fw-bold" style="color: #55acee">{{$rating->username}}</p>
-                                            <p style="margin-top: -10px; color:#333333">{{\Carbon\Carbon::create($item->created_at)->format('F n, Y')}}</p>
-                                        </div>
-                                        <div class="justify-content-end">
-                                            <p>{{$rating->rating}}.0<span class="fa fa-star mr-3 checked" style="color:orange"></span></p>
+                            <h5 class="py-3 mt-2">Tour Guide Recommendation</h5>
+                            @forelse ($recommendations as $guide)
+                                <div class="card">
+                                    <div class="card-body ml-3">
+                                        <div class="container profile-page mt-3">
+                                            <div class="row">
+                                                <div class="profile-header">
+                                                    <div class="row">
+                                                        <div class="ml-4">
+                                                            <div class="profile-image float-md-left"> <img
+                                                                    style="max-width: 60px"
+                                                                    src="{{ Storage::url($guide->image) }}" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-10 col-5">
+                                                            <h6 class="m-t-0 m-b-0">{{ $guide->name }}</h6>
+                                                            <span class="job_post">Profesional Tour Guide</span>
+                                                            <p>Destination: {{ $guide->travel_package->title }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
-                                    <p>{{$rating->comment}}</p>
                                 </div>
-                            </div>
                             @empty
-                            <p>No Comment</p>
+                                <p>No Comment</p>
                             @endforelse
 
                         </div>

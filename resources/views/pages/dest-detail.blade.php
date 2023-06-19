@@ -104,16 +104,17 @@
                     <div class="row mt-5">
                         <div class="col">
                             <div class="card">
-                                <h5 class="px-5 py-3 mt-2">Tour Guide Recommendation</h5>
 
-                                @forelse ($recommendations as $key => $guide)
-                                <div class="container profile-page">
+                                <h5 class="px-5 py-3 mt-2">Tour Guide Profesional</h5>
+
+                                @forelse ($guides as $guide)
+                                <div class="container profile-page mt-3">
                                     <div class="row">
                                         <div class="profile-header">
                                             <div class="row">
                                                 <div class="ml-4">
                                                     <div class="profile-image float-md-left"> <img style="max-width: 60px"
-                                                            src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                                            src="{{Storage::url($guide->image)}}"
                                                             alt=""> </div>
                                                 </div>
                                                 <div class="col-lg-9 col-md-10 col-5">

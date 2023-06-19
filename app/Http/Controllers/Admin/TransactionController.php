@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
-
+use Carbon\Carbon;
+use PDF;
 class TransactionController extends Controller
 {
     /**
@@ -20,7 +21,9 @@ class TransactionController extends Controller
         ])->get();
 
         return view('pages.admin.transaction.index',[
-            'items'=>$items
+            'items'=>$items,
+            'filterFrom'=>null,
+            'filterTo'=>null
         ]);
     }
 
@@ -108,5 +111,49 @@ class TransactionController extends Controller
         $item = Transaction::findOrFail($id);
         $item -> delete();
         return redirect()->route('transaction.index');
+    }
+
+        /**
+     * Filter the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function filter(Request $request)
+    {
+
+        $request->validate([
+            'filterFrom'=>'required:date_format:m/d/Y',
+            'filterTo'=>'required:date_format:m/d/Y'
+        ]);
+
+        $data = $request->all();
+        $filter_from = Carbon::createFromFormat('m/d/Y', $request['filterFrom'])->format('Y-m-d');
+        $filter_to = Carbon::createFromFormat('m/d/Y', $request['filterTo'])->format('Y-m-d');
+        $items = Transaction::whereBetween('created_at', [$filter_from, $filter_to])->get();
+
+        return view('pages.admin.transaction.index',[
+            'items'=>$items,
+            'filterFrom'=>$data['filterFrom'],
+            'filterTo'=>$data['filterTo']
+        ]);
+    }
+
+    public function pdf(Request $request)
+    {
+        $data = $request->all();
+        if ($data['filterFrom'] == null) {
+            $items = Transaction::all();
+
+            $pdf = PDF::loadview('pages.admin.transaction.pdf',['items'=>$items]);
+            return $pdf->download('laporan-transaction.pdf');
+        }
+
+        $filter_from = Carbon::createFromFormat('m/d/Y', $request['filterFrom'])->format('Y-m-d');
+        $filter_to = Carbon::createFromFormat('m/d/Y', $request['filterTo'])->format('Y-m-d');
+        $items = Transaction::whereBetween('created_at', [$filter_from, $filter_to])->get();
+
+        $pdf = PDF::loadview('pages.admin.transaction.pdf',['items'=>$items]);
+        return $pdf->download('laporan-transaction.pdf');
     }
 }

@@ -15,8 +15,8 @@
                 <table class="table table-bordered trip-informations">
 
                     <tr>
-                        <th class="text-left" width="50%">Hire Price</th>
-                        <td width="50%" class="text-left">{{ 'Rp ' . number_format($item->price, 2, ',', '.') }} / person</td>
+                        <th class="text-left" width="50%">Tour Guide</th>
+                        <td width="50%" class="text-left">{{ $item->guide_package->name }}</td>
                     </tr>
                     <tr>
                         <th class="text-left" width="50%">Transportation</th>
@@ -24,15 +24,18 @@
                     </tr>
                     <tr>
                         <th class="text-left" width="50%">Sub Total</th>
-                        <td width="50%" class="text-left">{{ 'Rp ' . number_format($item->price + 100000, 2, ',', '.') }}</td>
+                        <td width="50%" class="text-left">
+                            {{ 'Rp ' . number_format($item->guide_package->price + 100000, 2, ',', '.') }}</td>
                     </tr>
-
+                    <tr>
+                        <th class="text-left" width="50%">Transaction Status</th>
+                        <td width="50%" class="text-left">{{ $item->transaction_status }}</td>
+                    </tr>
                 </table>
             </div>
 
-
             <div class="text-center">
-                <form accept="{{route('review-guide-create', $item->id)}}" method="POST">
+                <form action="{{ route('review-guide-create', $item->guide_package->id) }}" method="POST">
                     @csrf
                     <div class="d-flex justify-content-center">
                         <fieldset class="rating">

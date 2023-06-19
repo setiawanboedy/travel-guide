@@ -23,9 +23,11 @@ class HireGuideController extends Controller
 
         $transaction = Transaction::create([
             'travel_packages_id'=>$tour_guide->travel_package->id,
+            'guide_packages_id'=> $tour_guide->id,
             'users_id' => Auth::user()->id,
+            'image' => NULL,
             'transaction_total'=>$tour_guide->price+100000,
-            'transaction_status'=>'IN_CART'
+            'transaction_status'=>'PENDING'
         ]);
 
         TransactionDetail::create([
@@ -34,6 +36,6 @@ class HireGuideController extends Controller
             'nationality'=>'ID'
         ]);
 
-        return redirect()->route('review-guide', $tour_guide->id);
+        return redirect()->route('upload-payment', $transaction->id);
     }
 }

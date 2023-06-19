@@ -6,23 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\TourGuide;
 use Illuminate\Support\Facades\Auth;
 use App\Models\GuideRating;
+use App\Models\Transaction;
 
 class ReviewGuideController extends Controller
 {
-    public function index(Request $request, $id){
-        $item = TourGuide::with(['travel_package'])->findOrFail($id);
+    public function index(Request $request, $transId){
+        $trans = Transaction::with([
+            'transaction_details','travel_package', 'guide_package', 'user'
+            ])->findOrFail($transId);
         return view('pages.review-guide',[
-            'item'=>$item
+            'item'=>$trans
         ]);
     }
 
-    public function create(Request $request, $id){
+    public function create(Request $request, $guideId){
         $request->validate([
             'rating'=>'required|integer',
             'comment'=>'required|string'
         ]);
-
-        $guide = TourGuide::findOrFail($id);
+        $guide = TourGuide::findOrFail($guideId);
 
         $data = $request->all();
         $data['guides_id'] = $guide->id;
@@ -30,8 +32,6 @@ class ReviewGuideController extends Controller
         $data['username'] = Auth::user()->username;
 
         GuideRating::create($data);
-
-        // dd($data);
 
         return redirect()->route('guide-detail', $guide->slug);
 

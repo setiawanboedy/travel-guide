@@ -95,7 +95,7 @@
             <div class="card overflow-hidden shadow"> <img class="card-img-top img-package" src="{{$item->travel_galleries->count() ? Storage::url($item->travel_galleries->first()->image) : ''}}" style="max-height: 510px" alt="{{$item->title}}" />
               <div class="card-body py-4 px-3">
                 <div class="d-flex flex-column flex-lg-row justify-content-between mb-3">
-                  <h4 class="text-secondary fw-medium"><a class="link-900 text-decoration-none stretched-link" href="{{route('destination-detail', $item->slug)}}">{{$item->title}}</a></h4><span class="fs-1 fw-medium">Rp {{$item->price}}k</span>
+                  <h4 class="text-secondary fw-medium"><a class="link-900 text-decoration-none stretched-link" href="{{route('destination-detail', $item->slug)}}">{{$item->title}}</a></h4><span class="fs-1 fw-medium">{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}</span>
                 </div>
                 <div class="d-flex align-items-center"> <img src="{{url('frontend/assets/img/dest/navigation.svg')}}" style="margin-right: 14px" width="20" alt="navigation" /><span class="fs-0 fw-medium">{{$item->duration}} Days Trip</span></div>
               </div>

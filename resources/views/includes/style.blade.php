@@ -5,3 +5,4 @@
 
     <!-- Custom styles for this template-->
 <link href="{{url('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/css/gijgo.min.css">

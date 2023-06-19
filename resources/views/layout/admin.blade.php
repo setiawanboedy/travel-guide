@@ -69,9 +69,9 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <form action="{{url('logout')}}" method="POST">
+                    <form action="{{ url('logout') }}" method="POST">
                         @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 
                         <button type="submit" class="btn btn-primary">Logout</button>
                     </form>
@@ -82,7 +82,29 @@
 
     <!-- Bootstrap core JavaScript-->
     @include('includes.script')
+    <script>
+        $(".datepickerFrom").datepicker({
+            uiLibrary: "bootstrap4",
+            icons: {
+                rightIcon: '<img src="{{ url('frontend/assets/img/dest/ic_doe.png') }}"/>',
+            },
+        });
+        $(".datepickerTo").datepicker({
+            uiLibrary: "bootstrap4",
+            icons: {
+                rightIcon: '<img src="{{ url('frontend/assets/img/dest/ic_doe.png') }}"/>',
+            },
+        });
 
+
+        function updateInputTo() {
+            var filterTo = document.getElementById('filterTo');
+            var dateTo = document.getElementById('dateTo');
+
+            dateTo.value = filterTo.value;
+
+        }
+    </script>
 </body>
 
 </html>

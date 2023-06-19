@@ -77,7 +77,10 @@ class RecommendationGuideController extends Controller
             return $b * $b;
         }, $vectorB)));
 
-        return $dotProduct / ($magnitudeA * $magnitudeB);
+        if ($dotProduct != 0) {
+            return $dotProduct / ($magnitudeA * $magnitudeB);
+        }
+        return 1;
     }
 
     private function predictUserPreference($userId, $itemId, $neighbors)

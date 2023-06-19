@@ -15,7 +15,9 @@ class Transaction extends Model
 
     protected $fillable = [
         'travel_packages_id',
+        'guide_packages_id',
         'users_id',
+        'image',
         'transaction_total',
         'transaction_status'
        ];
@@ -33,5 +35,10 @@ class Transaction extends Model
     public function user()
     {
         return $this->belongsTo(User::class,'users_id', 'id');
+    }
+
+    public function guide_package()
+    {
+        return $this->belongsTo(TourGuide::class,'guide_packages_id', 'id');
     }
 }

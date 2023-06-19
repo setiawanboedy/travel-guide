@@ -10,6 +10,43 @@
 
         </div>
 
+        <div class="d-flex pb-2 mr-2">
+            <div class="mr-auto py-2">
+                <form action="{{route('pdf-trans')}}" method="post">
+                    @csrf
+                    <input type="hidden" id="dateFrom" name="filterFrom" value="{{$filterFrom}}"/>
+                    <input type="hidden" id="dateTo" name="filterTo" value="{{$filterTo}}"/>
+                    <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-download fa-sm text-white-50"></i> Generate Report</button>
+                </form>
+
+            </div>
+            <form action="{{route('filter-trans')}}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="py-2">
+                        <p class="text-center">from</p>
+                    </div>
+
+                    <div class="col-sm">
+                        <input type="text" class="datepickerFrom form-control" id="filterFrom" name="filterFrom" value="{{$filterFrom}}" placeholder="Filter by Date" />
+
+
+                    </div>
+                    <div class="py-2">
+                        <p class="text-center">to</p>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="datepickerTo form-control" id="filterTo" name="filterTo" value="{{$filterTo}}" placeholder="Filter by Date" />
+
+                    </div>
+                    <div class="col-sm-0">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="card shadow">
             <div class="card card-body">
                 <table class="table table-bordered">
@@ -20,6 +57,7 @@
                             <th>User</th>
                             <th>Total</th>
                             <th>Status</th>
+                            <th>Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,16 +67,21 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->travel_package->title }}</td>
                                 <td>{{ $item->user->name }}</td>
-                                <td>${{ $item->transaction_total }}</td>
+                                <td>{{ "Rp " . number_format($item->transaction_total,2,',','.') }}</td>
                                 <td>{{ $item->transaction_status }}</td>
                                 <td>
-                                    <a href="{{route('transaction.show', $item->id) }}" class="btn btn-primary">
+                                    <img src="{{ Storage::url($item->image) }}" alt="" style="width: 100px"
+                                        class="img-thumbnail">
+                                </td>
+                                <td>
+                                    <a href="{{ route('transaction.show', $item->id) }}" class="btn btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="{{route('transaction.edit', $item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('transaction.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{route('transaction.destroy', $item->id)}}" method="post" class="d-inline">
+                                    <form action="{{ route('transaction.destroy', $item->id) }}" method="post"
+                                        class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">

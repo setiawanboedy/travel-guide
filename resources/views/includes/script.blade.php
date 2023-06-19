@@ -6,7 +6,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{url('backend/js/sb-admin-2.min.js')}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/js/gijgo.min.js"></script>
 <!-- Page level plugins -->
 <script src="{{url('backend/vendor/chart.js/Chart.min.js')}}"></script>
 

@@ -18,9 +18,22 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('/auth', 'AuthController@index')->name('auth');
     Route::get('/guide', 'TourGuideController@index')->name('guide');
     Route::get('/destination-detail/{slug}', 'DestDetailController@index')->name('destination-detail');
-    Route::get('/guide-detail/{slug}', 'TourDetailController@index')->name('guide-detail');
 
+});
 
+Route::namespace('App\Http\Controllers')
+    ->middleware(['auth','web'])
+    ->controller(TourDetailController::class)
+    ->group(function(){
+        Route::get('/guide-detail/{slug}', 'index')->name('guide-detail');
+});
+
+Route::namespace('App\Http\Controllers')
+    ->middleware(['auth','web'])
+    ->controller(UploadPaymentController::class)
+    ->group(function(){
+        Route::get('/upload-payment/{transId}', 'index')->name('upload-payment');
+        Route::post('/upload-payment/update/{id}', 'update')->name('update-payment');
 });
 
 Route::namespace('App\Http\Controllers')
@@ -28,7 +41,7 @@ Route::namespace('App\Http\Controllers')
     ->controller(ReviewGuideController::class)
     ->group(function(){
         Route::get('/hire-guide/review-guide/{id}', 'index')->name('review-guide');
-        Route::post('/hire-guide/review-guide/{id}', 'create')->name('review-guide-create');
+        Route::post('/hire-guide/review-guide/create/{id}', 'create')->name('review-guide-create');
 });
 
 Route::namespace('App\Http\Controllers')
@@ -59,7 +72,11 @@ Route::prefix('admin')
         Route::resource('guide-package', TourGuidePackageController::class);
         Route::resource('travel-package', TravelPackageController::class);
         Route::resource('gallery', GalleryController::class);
+
+        Route::post('transaction/filter', 'TransactionController@filter')->name('filter-trans');
+        Route::post('transaction/pdf', 'TransactionController@pdf')->name('pdf-trans');
         Route::resource('transaction', TransactionController::class);
+
     });
 
 Auth::routes();
