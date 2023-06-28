@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use MMedia\LaravelCollaborativeFiltering\HasCollaborativeFiltering;
+use Database\Factories\TourFactory;
 
 class TourGuide extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasCollaborativeFiltering;
 
     protected $fillable = [
         'travel_packages_id',
@@ -30,6 +33,10 @@ class TourGuide extends Model
      */
     protected $hidden = [
     ];
+    protected static function newFactory()
+    {
+        return TourFactory::new();
+    }
 
     /**
      * Get all of the ratings for the TourGuide
@@ -45,4 +52,11 @@ class TourGuide extends Model
     {
         return $this->belongsTo(TravelPackage::class,'travel_packages_id', 'id');
     }
+
+    public function relatedThroughRatingss()
+    {
+        return $this->hasManyRelatedThrough(GuideRating::class, 'users_id');
+    }
+
+
 }

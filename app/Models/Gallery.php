@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\TravelPackage;
+use Database\Factories\GalleryFactory;
 
 class Gallery extends Model
 {
@@ -18,7 +19,10 @@ class Gallery extends Model
        ];
 
     protected $hidden = [];
-
+    protected static function newFactory()
+{
+    return GalleryFactory::new();
+}
     /**
      * Get the travel_package that owns the Gallery
      *

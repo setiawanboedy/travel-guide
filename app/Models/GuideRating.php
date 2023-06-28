@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Database\Factories\RatingFactory;
 class GuideRating extends Model
 {
     use HasFactory;
@@ -24,7 +24,10 @@ class GuideRating extends Model
      */
     protected $hidden = [
     ];
-
+    protected static function newFactory()
+    {
+        return RatingFactory::new();
+    }
     /**
      * Get the user that owns the GuideRating
      *

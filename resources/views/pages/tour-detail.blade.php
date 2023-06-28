@@ -19,21 +19,18 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="https://ui-avatars.com/api/?name={{ $item->name }}"
+                            <img src="{{Storage::url($item->image)}}"
                                 alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">{{ $item->name }}</h5>
                             <p class="text-muted mb-1">Senior Tour Guide</p>
                             <p class="text-muted mb-4">{{ $item->location }}</p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                            </div>
+
                         </div>
                     </div>
                     <div class="card mb-4">
 
-                        <a type="button" href="{{ route('hire', $item->id) }}" class="btn btn-primary"
-                            style="color: white">Sewa Saya</a>
+                        <a type="button" href="{{ route('hire', $item->id) }}" class="btn"
+                            style="color: white; background-color: orange">Sewa Saya</a>
 
                     </div>
                     <div class="card mb-4 mb-lg-0">
