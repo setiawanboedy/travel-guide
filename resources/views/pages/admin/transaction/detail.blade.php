@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Transaction Detail {{$item->user->name}}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Detail Transaksi {{$item->user->name}}</h1>
 
         </div>
 
@@ -29,29 +29,29 @@
                         <td>{{$item->id}}</td>
                     </tr>
                     <tr>
-                        <th>Travel Package</th>
+                        <th>Paket Perjalanan</th>
                         <td>{{$item->travel_package->title}}</td>
                     </tr>
                     <tr>
-                        <th>Buyer</th>
+                        <th>Pembeli</th>
                         <td>{{$item->user->name}}</td>
                     </tr>
                     <tr>
-                        <th>Transaction Total</th>
+                        <th>Total Transaksi</th>
                         <td>Rp {{$item->transaction_total}}k</td>
                     </tr>
                     <tr>
-                        <th>Transaction Status</th>
+                        <th>Status Transaksi</th>
                         <td>{{$item->transaction_status}}</td>
                     </tr>
                     <tr>
-                        <th>Purchase</th>
+                        <th>Pembayaran</th>
                         <td>
                             <table class="table table-bordered">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Nationality</th>
+                                    <th>Nama</th>
+                                    <th>Kebangsaan</th>
 
                                 </tr>
                                 @foreach ($item->transaction_details as $detail)

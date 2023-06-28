@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Travel</th>
+                            <th>Wisata</th>
                             <th>Gambar</th>
                             <th>Action</th>
                         </tr>

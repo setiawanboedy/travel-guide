@@ -6,9 +6,9 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Gallery</h1>
+            <h1 class="h3 mb-0 text-gray-800">Edit Galeri</h1>
             <a href="{{ route('gallery.index') }}" class="btn btn-sm btn-danger shadow-sm">
-                <i class="fa-sm text-white-50"></i> Cancel Edit
+                <i class="fa-sm text-white-50"></i> Batal Edit
             </a>
         </div>
 
@@ -41,7 +41,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">Gambar</label>
                         <input type="file" name="image" placeholder="Image" class="form-control">
                     </div>
 

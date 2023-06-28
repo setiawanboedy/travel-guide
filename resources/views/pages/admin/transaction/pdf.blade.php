@@ -19,11 +19,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Travel</th>
-                    <th>User</th>
+                    <th>Tujuan</th>
+                    <th>Pembeli</th>
                     <th>Total</th>
                     <th>Status</th>
-                    <th>Payment</th>
+                    <th>Bukti Pembayaran</th>
                 </tr>
             </thead>
             <tbody>

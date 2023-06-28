@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Tambah Gallery</h1>
+            <h1 class="h3 mb-0 text-gray-800">Tambah Galeri</h1>
 
         </div>
 
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="image">Image</label>
+                        <label for="image">Gambar</label>
                         <input type="file" name="image" placeholder="Image" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Simpan</button>

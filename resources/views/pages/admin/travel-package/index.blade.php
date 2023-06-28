@@ -6,9 +6,9 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Travel Package</h1>
+            <h1 class="h3 mb-0 text-gray-800">Paket Wisata</h1>
             <a href="{{ route('travel-package.create') }}" class="btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus fa-sm text-white-50"></i> Add Travel Package
+                <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Paket Wisata
             </a>
         </div>
 
@@ -18,11 +18,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
-                            <th>Location</th>
-                            <th>Type</th>
-                            <th>Departure Date</th>
-                            <th>Type</th>
+                            <th>Nama</th>
+                            <th>Lokasi</th>
+                            <th>Jenis Perjalanan</th>
+                            <th>Tanggal Berangkat</th>
+
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,7 +34,6 @@
                                 <td>{{ $item->location }}</td>
                                 <td>{{ $item->type }}</td>
                                 <td>{{ $item->departure_date }}</td>
-                                <td>{{ $item->type }}</td>
                                 <td>
                                     <a href="{{route('travel-package.edit', $item->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>

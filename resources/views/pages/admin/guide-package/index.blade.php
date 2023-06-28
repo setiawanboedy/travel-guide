@@ -18,12 +18,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Image Foto</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Days</th>
-                        <th>Destination</th>
-                        <th>Price</th>
+                        <th>Foto</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Hari</th>
+                        <th>Tujuan Wisata</th>
+                        <th>Harga</th>
                         <th>Action</th>
                     </tr>
                 </thead>

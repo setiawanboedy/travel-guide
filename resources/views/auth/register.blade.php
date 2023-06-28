@@ -3,11 +3,11 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">{{ __('Create new account') }}</h4>
+            <h4 class="card-title">{{ __('Buat akun baru') }}</h4>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="name">{{ __('Name') }}</label>
+                    <label for="name">{{ __('Nama') }}</label>
                     <input type="text" class="form-control @error('name')
 is-invalid
                 @enderror"
@@ -34,7 +34,7 @@ is-invalid
                 </div>
 
                 <div class="form-group">
-                    <label for="email">{{ __('E-Mail Address') }}</label>
+                    <label for="email">{{ __('E-Mail') }}</label>
                     <input id="email" type="email"
                         class="form-control @error('email')
 is-invalid
@@ -49,7 +49,7 @@ is-invalid
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="password">{{ __('Password') }}
+                        <label for="password">{{ __('Kata sandi') }}
                         </label>
                         <input id="password" type="password"
                             class="form-control @error('password')
@@ -63,7 +63,7 @@ is-invalid
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password-confirm">{{ __('Confirm Password') }}
+                        <label for="password-confirm">{{ __('Konfirmaasi kata sandi') }}
                         </label>
                         <input id="password-confirm" type="password2" class="form-control" name="password_confirmation"
                             required autocomplete="new-password">
@@ -73,11 +73,11 @@ is-invalid
 
                 <div class="form-group no-margin">
                     <button type="submit" class="btn btn-block" style="background-color: orange; color:white">
-                        Sign Up
+                        Daftar
                     </button>
                 </div>
                 <div class="text-center mt-3 small">
-                    Already have an account? <a href="{{ route('login') }}">Sign In</a>
+                    Sudah punya akun? <a href="{{ route('login') }}">Masuk</a>
                 </div>
             </form>
         </div>

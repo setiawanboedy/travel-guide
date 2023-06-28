@@ -8,7 +8,7 @@
       <ul class="navbar-nav me-auto d-none d-lg-block">
         <li>
           <span class="text-muted">
-            | &nbsp; Beyond the explore of the world
+            | &nbsp; Perjalan menggapai dunia
           </span>
         </li>
       </ul>
