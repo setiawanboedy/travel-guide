@@ -6,9 +6,9 @@
         <div class="col text-center">
             {{-- <form action="{{ route('update-payment', $transId) }}" method="POST">
                 @csrf --}}
-            <h1>One step closer</h1>
+            <h1>Satu langkah lagi</h1>
             <p>
-                Please upload your transaction evidence before you get the trip
+                Mohon upload bukti pembayaran anda untuk konfirmasi transaksi
             </p>
             @if ($errors->any())
                 <div class="alert alert-danger">

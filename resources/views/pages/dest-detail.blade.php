@@ -7,7 +7,7 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $item->slug }}</li>
                         </ol>
                 </div>
@@ -35,7 +35,7 @@
                                 <img src="{{ url('frontend/assets/img/dest/ic_event.png') }}" alt="event"
                                     class="features-image" />
                                 <div class="description">
-                                    <h3>Featured Event</h3>
+                                    <h3>Even Lokal</h3>
                                     <p>{{ $item->featured_event }}</p>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <img src="{{ url('frontend/assets/img/dest/ic_bahasa.png') }}" alt="event"
                                     class="features-image" />
                                 <div class="description">
-                                    <h3>Language</h3>
+                                    <h3>Bahasa</h3>
                                     <p>{{ $item->language }}</p>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <img src="{{ url('frontend/assets/img/dest/ic_foods.png') }}" alt="event"
                                     class="features-image" />
                                 <div class="description">
-                                    <h3>Foods</h3>
+                                    <h3>Makanan</h3>
                                     <p>{{ $item->foods }}</p>
                                 </div>
                             </div>
@@ -61,24 +61,24 @@
 
                 <div class="col-lg-4">
                     <div class="card card-detail card-right">
-                        <h2>Trip Informations</h2>
+                        <h2>Informasi Perjalanan</h2>
                         <table class="trip-informations">
                             <tr>
-                                <th width="50%">Date of Departure</th>
+                                <th width="50%">Tanggal Berangkat</th>
                                 <td width="50%" class="text-right">
                                     {{ \Carbon\Carbon::create($item->date_of_departure)->format('F n, Y') }}
                                 </td>
                             </tr>
                             <tr>
-                                <th width="50%">Duration</th>
+                                <th width="50%">Jumlah Hari</th>
                                 <td width="50%" class="text-right">{{ $item->duration }} day/s</td>
                             </tr>
                             <tr>
-                                <th width="50%">Type</th>
+                                <th width="50%">Jenis Perjalanan</th>
                                 <td width="50%" class="text-right">{{ $item->type }}</td>
                             </tr>
                             <tr>
-                                <th width="50%">Price</th>
+                                <th width="50%">Harga</th>
                                 <td width="50%" class="text-right">Rp {{ $item->price }}k / person</td>
                             </tr>
                         </table>
@@ -89,14 +89,14 @@
                                 @csrf
                                 <div class="d-grid">
                                     <button class="btn btn-block btn-join-now mt-3 py-2" type="submit">
-                                        Join Now
+                                        Ikut Sekarang
                                     </button>
                                 </div>
                             </form>
                         @endauth
                         @guest
                             <a href="{{ route('login') }}" class="btn btn-block btn-join-now mt-3 py-2">
-                                Login or Register to Join
+                                Masuk atau Daftar untuk ikut
                             </a>
                         @endguest
                     </div>
@@ -105,7 +105,7 @@
                         <div class="col">
                             <div class="card">
 
-                                <h5 class="px-5 py-3 mt-2">Tour Guide Profesional</h5>
+                                <h5 class="px-5 py-3 mt-2">Pemandu Profesional</h5>
 
                                 @forelse ($guides as $guide)
                                 <div class="container profile-page mt-3">
@@ -120,7 +120,7 @@
                                                 <div class="col-lg-9 col-md-10 col-5">
                                                     <h6 class="m-t-0 m-b-0">{{$guide->name}}</h6>
                                                     <span class="job_post">Profesional Tour Guide</span>
-                                                    <p>Destination: {{$guide->travel_package->title}}</p>
+                                                    <p>Tujuan: {{$guide->travel_package->title}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +128,7 @@
 
                                 </div>
                                 @empty
-                                <p>No Data</p>
+                                <p>Tidak ada data</p>
                                 @endforelse
                             </div>
 

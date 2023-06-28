@@ -7,8 +7,8 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Tour Guide</a></li>
+                            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="#">Pemandu Wisata</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Checkout</li>
                         </ol>
                 </div>
@@ -26,15 +26,15 @@
                                 </ul>
                             </div>
                         @endif
-                        <h1>Who is going ?</h1>
-                        <p>Trip to {{ $item->travel_package->title }}, {{ $item->travel_package->location }}</p>
+                        <h1>Siapa yang pergi?</h1>
+                        <p>Wista ke {{ $item->travel_package->title }}, {{ $item->travel_package->location }}</p>
                         <div class="attendee">
                             <table class="table table-responsive-sm text-center">
                                 <thead>
                                     <tr>
-                                        <td>Picture</td>
+                                        <td>Foto</td>
                                         <td>Username</td>
-                                        <td>Nationality</td>
+                                        <td>Kebangsaan</td>
                                         <td></td>
                                     </tr>
                                 </thead>
@@ -57,7 +57,7 @@
                                     @empty
                                         <tr>
                                             <td colspan="6" class="text-center">
-                                                No visitor
+                                                Tidak ada pengunjung
                                             </td>
                                         </tr>
                                     @endforelse
@@ -67,21 +67,9 @@
                             </table>
                         </div>
 
-
-                        <label class="mt-3" for="travel_packages_id">Tour Guide</label>
-                        <select name="travel_packages_id" required class="form-control mb-2">
-                            <option value="">Pilih Tour Guide</option>
-
-                            <option value="0">
-                                Budi Setiawan
-                            </option>
-
-                        </select>
-
-
                         <div class="member mt-3">
 
-                            <h6>Add Member</h6>
+                            <h6>Tambah Teman</h6>
 
                             <form method="POST" action="{{ route('checkout-create', $item->id) }}"
                                 class="row gy-2 gx-3 align-items-center">
@@ -96,15 +84,15 @@
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-add-now mb-2 px-4">
-                                        Add Now
+                                        Tambahkan
                                     </button>
                                 </div>
                             </form>
                             <h3 class="mt-2 mb-0">
-                                Note
+                                Catatan
                             </h3>
                             <p class="disclaimer mb-0">
-                                You are only able to invite member that has registered in Nomads.
+                                Kamu hanya bisa menambahkan orang yang sudah terdaftar.
                             </p>
                         </div>
                     </div>
@@ -113,18 +101,18 @@
                 <div class="col-lg-4">
                     <div class="card card-detail card-right">
 
-                        <h2>Checkout Informations</h2>
+                        <h2>Informasi Pembayaran</h2>
                         <table class="trip-informations">
                             <tr>
-                                <th width="50%">Members</th>
+                                <th width="50%">Anggota</th>
                                 <td width="50%" class="text-right">{{ $item->transaction_details->count() }} person</td>
                             </tr>
                             <tr>
-                                <th width="50%">Trip Price</th>
+                                <th width="50%">Harga</th>
                                 <td width="50%" class="text-right">Rp {{ $item->travel_package->price }}k / person</td>
                             </tr>
                             <tr>
-                                <th width="50%">Sub Total</th>
+                                <th width="50%">Sub Harga</th>
                                 <td width="50%" class="text-right">Rp {{ $item->transaction_total }}k</td>
                             </tr>
                             <tr>
@@ -137,9 +125,9 @@
                         </table>
 
                         <hr>
-                        <h2>Payment Instructions</h2>
+                        <h2>Panduan Pembayaran</h2>
                         <p class="payment-instructions">
-                            Please complete your payment before to continue the wonderful trip
+                            Mohon meyelesaikan pembyaran untuk melanjutkan perjalanan!
                         </p>
 
                         <div class="bank mt-3">
@@ -160,13 +148,13 @@
                     </div>
                     <div class="join-container">
                         <a href="{{ route('checkout-success', $item->id) }}" class="btn btn-block btn-join-now mt-3 py-2">
-                            I Have Made Payment
+                            Saya Sudah Bayar
                         </a>
                     </div>
                     <div class="text-center mt-3">
                         <a href="{{ route('destination-detail', $item->travel_package->slug) }}" class="text-muted"
                             style="text-decoration: none;">
-                            Cancel Booking
+                            Batal Booking
                         </a>
                     </div>
                 </div>

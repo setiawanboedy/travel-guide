@@ -3,23 +3,23 @@
 @section('content')
     <div class="container-sm section-success mt-100" style="max-width: 650px; margin-bottom: 150px;">
         <div class="col text-center">
-            <h1>Yay! Enjoy Your Trip</h1>
+            <h1>Selamat! Nikmati perjalananmu</h1>
             <p>
-                I hope you have a nice trip <br>
-                please review our tour guide after your trip to make it better :)
+                Semoga perjalananmu menyenangkan <br>
+                mohon berikan feedback untuk melayani lebih baik :)
             </p>
 
-            <h6 class="d-flex justify-content-start mt-4">Trip Informations</h6>
+            <h6 class="d-flex justify-content-start mt-4">Informasi Perjalanan</h6>
             <div class="row justify-content-center">
 
                 <table class="table table-bordered trip-informations">
 
                     <tr>
-                        <th class="text-left" width="50%">Tour Guide</th>
+                        <th class="text-left" width="50%">Pemandu Wisata</th>
                         <td width="50%" class="text-left">{{ $item->guide_package->name }}</td>
                     </tr>
                     <tr>
-                        <th class="text-left" width="50%">Transportation</th>
+                        <th class="text-left" width="50%">Transportasi</th>
                         <td width="50%" class="text-left">{{ 'Rp ' . number_format(100000, 2, ',', '.') }}</td>
                     </tr>
                     <tr>
@@ -28,7 +28,7 @@
                             {{ 'Rp ' . number_format($item->guide_package->price + 100000, 2, ',', '.') }}</td>
                     </tr>
                     <tr>
-                        <th class="text-left" width="50%">Transaction Status</th>
+                        <th class="text-left" width="50%">Status Transaksi</th>
                         <td width="50%" class="text-left">{{ $item->transaction_status }}</td>
                     </tr>
                 </table>
@@ -59,13 +59,13 @@
                     </div>
 
                     <div class="d-flex justify-content-start">
-                        <label for="about">What make you satisfied?</label>
+                        <label for="about">Apa yang membuatmu puas?</label>
                     </div>
                     <div class="form-group d-flex justify-content-center">
                         <textarea name="comment" rows="6" class="d-block w50 form-control"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-home-page mt-3 px-5">Submit</button>
+                    <button type="submit" class="btn btn-home-page mt-3 px-5">Kirim</button>
                 </form>
             </div>
         @endsection

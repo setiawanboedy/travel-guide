@@ -6,28 +6,27 @@
     <section class="payment-form dark">
       <div class="container">
         <div class="block-heading">
-          <h2>Payment</h2>
+          <h2>Pembayaran</h2>
           <p>
-            Please make a payment to the account listed to complete the transaction.</p>
+            Mohon selesaikan pembayaran untuk melanjutkan perjalanan.</p>
         </div>
           <form action="{{route('hire-create', $item->id)}}" method="POST">
             @csrf
             <div class="products">
-                <h3 class="title">Checkout</h3>
                 <div class="item">
                   <span class="price">{{"Rp " . number_format($item->price,2,',','.')}}</span>
-                  <p class="item-name">Tour Guide Destination</p>
+                  <p class="item-name">Tujuan Wisata</p>
                   <p class="item-description">{{$item->travel_package->title}}</p>
                 </div>
                 <div class="item">
                   <span class="price">{{"Rp " . number_format(100000,2,',','.')}}</span>
-                  <p class="item-name">Transportation</p>
+                  <p class="item-name">Transportasi</p>
                   <p class="item-description">{{$item->transportation}}</p>
                 </div>
                 <div class="total">Total<span class="price">{{"Rp " . number_format($item->price+100000,2,',','.')}}</span></div>
               </div>
               <div class="card-details">
-                <h3 class="title">Credit Card Details</h3>
+                <h3 class="title">Tujuan pembayaran</h3>
 
                     <div class="row bank ml-3">
                         <div class="col-sm-3">

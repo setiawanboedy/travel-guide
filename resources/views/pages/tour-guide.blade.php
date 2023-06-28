@@ -7,8 +7,8 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Tour Guide</li>
+                            <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Pemandu</li>
                         </ol>
                 </div>
             </div>

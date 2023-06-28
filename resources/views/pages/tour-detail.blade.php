@@ -8,8 +8,8 @@
                 <div class="col">
                     <nav class="bg-light rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0 bg-light">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('guide') }}">Tour Guide</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('guide') }}">Pemandu</a></li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $item->slug }}</li>
                         </ol>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            <img src="https://ui-avatars.com/api/?name={{ $item->name }}"
                                 alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                             <h5 class="my-3">{{ $item->name }}</h5>
                             <p class="text-muted mb-1">Senior Tour Guide</p>
@@ -33,7 +33,7 @@
                     <div class="card mb-4">
 
                         <a type="button" href="{{ route('hire', $item->id) }}" class="btn btn-primary"
-                            style="color: white">Hire Him</a>
+                            style="color: white">Sewa Saya</a>
 
                     </div>
                     <div class="card mb-4 mb-lg-0">
@@ -64,7 +64,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                    <p class="mb-0">Nama Lengkap</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $item->name }}</p>
@@ -73,25 +73,17 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Destination</p>
+                                    <p class="mb-0">Tujuan Wisata</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $item->travel_package->title }}</p>
                                 </div>
                             </div>
                             <hr>
+
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(097) 234-5678</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Mobile</p>
+                                    <p class="mb-0">No. Hp</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">(098) 765-4321</p>
@@ -100,7 +92,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
+                                    <p class="mb-0">Alamat</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $item->location }}</p>
@@ -110,7 +102,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h5 class="py-3 mt-2">Tour Guide Recommendation</h5>
+                            <h5 class="py-3 mt-2">Rekomendasi Pemandu</h5>
                             @forelse ($recommendations as $guide)
                                 <div class="card">
                                     <div class="card-body ml-3">
@@ -127,7 +119,7 @@
                                                         <div class="col-lg-9 col-md-10 col-5">
                                                             <h6 class="m-t-0 m-b-0">{{ $guide->name }}</h6>
                                                             <span class="job_post">Profesional Tour Guide</span>
-                                                            <p>Destination: {{ $guide->travel_package->title }}</p>
+                                                            <p>Tujuan: {{ $guide->travel_package->title }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +129,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <p>No Comment</p>
+                                <p>Tidak ada rekomendasi</p>
                             @endforelse
 
                         </div>
