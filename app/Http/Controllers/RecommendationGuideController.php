@@ -66,36 +66,24 @@ class RecommendationGuideController extends Controller
         return array_slice($neighbors, 0, $k, true);
     }
 
-    private function pearsonCorrelation($vectorA, $vectorB)
+    private function cosineSimilarity($vectorA, $vectorB)
     {
-        $n = count($vectorA);
-        if ($n === 0) {
-            return 0;
+        $dotProduct = array_sum(array_map(function ($a, $b) {
+            return $a * $b;
+        }, $vectorA, $vectorB));
+
+        $magnitudeA = sqrt(array_sum(array_map(function ($a) {
+            return $a * $a;
+        }, $vectorA)));
+
+        $magnitudeB = sqrt(array_sum(array_map(function ($b) {
+            return $b * $b;
+        }, $vectorB)));
+
+        if ($dotProduct != 0) {
+            return $dotProduct / ($magnitudeA * $magnitudeB);
         }
-
-        $meanA = array_sum($vectorA) / $n;
-        $meanB = array_sum($vectorB) / $n;
-
-        $numerator = $denominatorA = $denominatorB = 0;
-
-        for ($i = 0; $i < $n; $i++) {
-            $devA = $vectorA[$i] - $meanA;
-            $devB = $vectorB[$i] - $meanB;
-
-            $numerator += $devA * $devB;
-            $denominatorA += pow($devA, 2);
-            $denominatorB += pow($devB, 2);
-        }
-
-        $denominator = sqrt($denominatorA) * sqrt($denominatorB);
-
-        if ($denominator === 0) {
-            return 0;
-        }
-
-
-        return $numerator / $denominator;
-
+        return 1;
     }
 
     private function predictUserPreference($userId, $itemId, $neighbors)
