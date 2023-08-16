@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="password">{{__('Kata sandi')}}
                 </label>
-                <input id="password" type="password" class="form-control @error('password')
+                <input id="password" type="password" class="form-control @error('pa ssword')
 is-invalid
                 @enderror" name="password" required autocomplete="current-password">
                 @error('password')

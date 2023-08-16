@@ -68,4 +68,6 @@
                     <button type="submit" class="btn btn-home-page mt-3 px-5">Kirim</button>
                 </form>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

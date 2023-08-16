@@ -53,7 +53,7 @@ class TourGuide extends Model
         return $this->belongsTo(TravelPackage::class,'travel_packages_id', 'id');
     }
 
-    public function relatedThroughRatingss()
+    public function relatedThroughRatings()
     {
         return $this->hasManyRelatedThrough(GuideRating::class, 'users_id');
     }

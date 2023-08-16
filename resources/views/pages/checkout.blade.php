@@ -128,7 +128,7 @@
                         <h2>Panduan Pembayaran</h2>
                         <p class="payment-instructions">
                             Mohon meyelesaikan pembyaran untuk melanjutkan perjalanan!
-                        </p>
+                        </p> 
 
                         <div class="bank mt-3">
                             <div class="bank-item pb-3">

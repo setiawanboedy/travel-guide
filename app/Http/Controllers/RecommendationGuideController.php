@@ -48,39 +48,54 @@ class RecommendationGuideController extends Controller
         $users = User::where('id', '<>', $userId)->get();
 
         $neighbors = [];
+        $userRatings = $user->ratings->pluck('rating')->toArray();
+
 
         foreach ($users as $otherUser) {
-            $similarity = $this->cosineSimilarity(
-                $user->ratings->pluck('rating')->toArray(),
-                $otherUser->ratings->pluck('rating')->toArray()
-            );
+            $userRatings = $user->ratings->pluck('rating')->toArray();
+            $otherUserRatings = $otherUser->ratings->pluck('rating')->toArray();
 
-            $neighbors[$otherUser->id] = $similarity;
+            // Pastikan vektor rating pengguna memiliki minimal 2 elemen untuk perhitungan
+            if (count($userRatings) >= 2 && count($otherUserRatings) >= 2) {
+                $similarity = $this->pearsonCorrelation($userRatings, $otherUserRatings);
+                $neighbors[$otherUser->id] = $similarity;
+            }
         }
-
         arsort($neighbors);
 
         return array_slice($neighbors, 0, $k, true);
     }
 
-    private function cosineSimilarity($vectorA, $vectorB)
+    private function pearsonCorrelation($vectorA, $vectorB)
     {
-        $dotProduct = array_sum(array_map(function ($a, $b) {
-            return $a * $b;
-        }, $vectorA, $vectorB));
-
-        $magnitudeA = sqrt(array_sum(array_map(function ($a) {
-            return $a * $a;
-        }, $vectorA)));
-
-        $magnitudeB = sqrt(array_sum(array_map(function ($b) {
-            return $b * $b;
-        }, $vectorB)));
-
-        if ($dotProduct != 0) {
-            return $dotProduct / ($magnitudeA * $magnitudeB);
+        $n = count($vectorA);
+        if ($n === 0) {
+            return 0;
         }
-        return 1;
+
+        $meanA = array_sum($vectorA) / $n;
+        $meanB = array_sum($vectorB) / $n;
+
+        $numerator = $denominatorA = $denominatorB = 0;
+
+        for ($i = 0; $i < $n; $i++) {
+            $devA = $vectorA[$i] - $meanA;
+            $devB = $vectorB[$i] - $meanB;
+
+            $numerator += $devA * $devB;
+            $denominatorA += pow($devA, 2);
+            $denominatorB += pow($devB, 2);
+        }
+
+        $denominator = sqrt($denominatorA) * sqrt($denominatorB);
+
+        if ($denominator === 0) {
+            return 0;
+        }
+
+
+        return $numerator / $denominator;
+
     }
 
     private function predictUserPreference($userId, $itemId, $neighbors)
